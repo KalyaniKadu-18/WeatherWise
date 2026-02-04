@@ -1,0 +1,35 @@
+.container{
+    height: 10rem;
+    width: 100%;
+    background-color: rgba(231, 254, 245,0.5);
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.leftSubContainer{
+    display: flex;
+    padding-left: 20px;
+}
+
+.leftSubContainer,h2{
+    padding-top: 5px;
+}
+
+.rightSubContainer{
+    display: flex;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.logo{
+    height: 80px;
+    width: 80px;
+    border-radius: 30px;   
+}
+
+.icons{
+    font-size: 30px;
+    color: var(--tertiary);
+}
+

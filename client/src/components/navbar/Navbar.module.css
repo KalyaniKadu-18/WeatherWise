@@ -1,0 +1,90 @@
+.container {
+  width: 96%;
+  height: 3.5rem;
+  font-size: 18px;
+  background-color: rgba(40, 40, 45, 0.55);
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  height: 45px;
+}
+
+.logo img {
+  height: 100%;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+/* Left */
+.leftNav {
+  display: flex;
+  align-items: center;
+}
+
+/* Middle Search */
+.midNav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Search Box */
+.searchBox {
+  position: relative;
+  width: 260px;
+}
+
+.searchBar {
+  width: 100%;
+  padding: 8px 36px 8px 14px;
+  border-radius: 25px;
+  border: 1px solid var(--primary);
+  background-color: transparent;
+  color: var(--primary);
+  outline: none;
+  font-size: 16px;
+}
+
+.searchBar::placeholder {
+  color: var(--primary);
+}
+
+.searchIcon {
+  position: absolute;
+  right: -25px;
+  top: 55%;
+  transform: translateY(-50%);
+  color: gray;
+  font-size: 20px;
+  font: bold;
+  pointer-events:all;
+  color: var(--primary);
+}
+
+/* Right Links */
+.rightNav {
+  padding-right: 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Links */
+.Link1 {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.Link1:hover {
+  color: var(--primary2);
+}
