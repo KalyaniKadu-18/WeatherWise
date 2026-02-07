@@ -15,3 +15,14 @@
   left: 0;
   z-index: 1;
 }
+
+.input{
+  width: 100%;
+  padding: 8px 36px 8px 14px;
+  border-radius: 25px;
+  border: 1px solid var(--primary);
+  background-color: transparent;
+  color: var(--primary);
+  outline: none;
+  font-size: 16px;
+}

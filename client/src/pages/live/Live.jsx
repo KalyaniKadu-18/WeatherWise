@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import styles from './Live.module.css';
 
 function Live() {
   return (
-    <div>Live</div>
+    <div className={styles.container}>
+       {/* <img src={bgimg} className={styles.bgimg}></img>   */}
+    </div>
   )
 }
 
-export default Live
+export default Live;

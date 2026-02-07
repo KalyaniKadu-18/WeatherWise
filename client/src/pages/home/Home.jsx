@@ -1,13 +1,12 @@
 import React from 'react';
 import styles from './Home.module.css';
-import bgimg from '../../assets/primaryBackgroundImage.png';
 import sunimg from '../../assets/overlayImg1.jpg'
 
 function Home() {
   return (
     <div className={styles.container}>
       
-      <img className={styles.heroBackgroundImg} src={bgimg} />
+      {/* <img className={styles.heroBackgroundImg} src={bgimg} loading='lazy'/> */}
 
       <div className={styles.heroContent}>
 

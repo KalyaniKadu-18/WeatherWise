@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import styles from './Forecast.module.css';
 
 function Forecast() {
   return (
-    <div>Forecast</div>
+    <div className={styles.container}>
+      {/* <img src={bgimg} className={styles.bgimg}></img> */}
+    </div>
   )
 }
 
