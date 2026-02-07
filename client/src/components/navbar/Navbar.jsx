@@ -32,8 +32,6 @@ function Navbar() {
         <Link className={styles.Link1} to={'/liveweather'}>Live Weather</Link>
         <Link className={styles.Link1} to={'/forecast'}>Forecast</Link>
         <Link className={styles.Link1} to={'/alerts'}>Alerts</Link>
-        <Link className={styles.Link1} to={'/signup'}>Signup</Link>
-        <Link className={styles.Link1} to={'/login'}>Login</Link>
       </div>
     </div>
   );

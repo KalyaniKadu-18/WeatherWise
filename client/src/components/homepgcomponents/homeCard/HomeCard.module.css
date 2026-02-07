@@ -1,0 +1,14 @@
+.container{
+    height: 130px;
+    width: 100px;
+    background: rgba(255, 255, 255, 0.20); 
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.para {
+  font-size: 22px;
+  font-weight: bold;
+}

@@ -1,0 +1,28 @@
+.alertCardContainer{
+background: rgba(211, 47, 47, 0.25);
+backdrop-filter: blur(12px);
+   height: auto;
+   width: 50%;
+   padding: 30px;
+   border-radius: 20px;
+}
+
+.alertCard {
+  max-width: 650px;
+  padding: 22px 28px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  color: white;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+}
+
+.alertCard h2 {
+  margin-bottom: 12px;
+}
+
+.advice {
+  margin-top: 12px;
+  font-weight: bold;
+  color: #ffd700;
+}

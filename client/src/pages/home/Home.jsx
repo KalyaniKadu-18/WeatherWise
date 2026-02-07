@@ -1,16 +1,33 @@
 import React from 'react';
 import styles from './Home.module.css';
-import sunimg from '../../assets/overlayImg1.jpg'
+import sunimg from '../../assets/overlayImg1.jpg';
+import bgimg from '../../assets/BackgroundImage.webp';
+import HomeCard from '../../components/homepgcomponents/homeCard/HomeCard';
 
 function Home() {
+
+  const hourlyData = [
+    { time: 'Now', temperature: '20' },
+    { time: '1 PM', temperature: '22' },
+    { time: '2 PM', temperature: '23' },
+    { time: '3 PM', temperature: '24' },
+    { time: '4 PM', temperature: '25' },
+  ];
+
   return (
     <div className={styles.container}>
       
-      {/* <img className={styles.heroBackgroundImg} src={bgimg} loading='lazy'/> */}
+      {/* Background Image */}
+      <img 
+        className={styles.heroBackgroundImg} 
+        src={bgimg} 
+        alt="background"
+        loading="lazy" 
+      />
 
       <div className={styles.heroContent}>
 
-        {/* New York Weather Card */}
+        {/* Weather Hero Card */}
         <div className={styles.weatherHeroCard}>
           <div className={styles.heroLeft}>
             <h2>Pune</h2>
@@ -21,21 +38,22 @@ function Home() {
           </div>
 
           <div className={styles.heroRight}>
-             <img className={styles.sunimg} src={sunimg}></img>
+            <img className={styles.sunimg} src={sunimg} alt="sun" />
           </div>
         </div>
 
-        {/* Hourly Forecast */}
+        {/* Hourly Forecast Section */}
         <div className={styles.hourlySection}>
           <h3>Hourly Forecast</h3>
 
           <div className={styles.hourlyRow}>
-            <div className={styles.hourCard}>Now<br />☀️<br />72°</div>
-            <div className={styles.hourCard}>1 PM<br />☀️<br />74°</div>
-            <div className={styles.hourCard}>2 PM<br />☀️<br />76°</div>
-            <div className={styles.hourCard}>3 PM<br />🌤️<br />75°</div>
-            <div className={styles.hourCard}>4 PM<br />☁️<br />71°</div>
-            <div className={styles.hourCard}>5 PM<br />☁️<br />71°</div>
+            {hourlyData.map((item, index) => (
+              <HomeCard 
+                key={index}
+                time={item.time}
+                temperature={item.temperature}
+              />
+            ))}
           </div>
         </div>
 

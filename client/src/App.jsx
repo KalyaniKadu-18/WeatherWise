@@ -6,8 +6,6 @@ import Forecast from './pages/forecast/Forecast';
 import Alerts from './pages/alerts/Alerts';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
-import Signup from './pages/signup/Signup';
-import Login from './pages/login/Login';
 
 function App() {
   return (
@@ -18,9 +16,7 @@ function App() {
         <Route path='/liveweather' element={<Live />} />
         <Route path='/forecast' element={<Forecast />} />
         <Route path='/alerts' element={<Alerts />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-      </Routes>
+\      </Routes>
       <Footer/>
     </BrowserRouter>
   );

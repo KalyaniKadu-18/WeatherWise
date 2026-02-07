@@ -1,0 +1,17 @@
+.container {
+   backdrop-filter: blur(20px);
+   height: auto;
+   width: 50%;
+   padding: 30px;
+   border-radius: 20px;
+   background-color: color-mix(in srgb, var(--primary2) 10%, white);
+}
+
+.heading {
+  color: var(--tertiary);
+  font-weight: bold;
+}
+
+.messages {
+  color: var(--tertiary);
+}
