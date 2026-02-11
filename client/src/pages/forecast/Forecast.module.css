@@ -1,12 +1,14 @@
-.container{
+/* .container {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.bgimg{
+.bgimg {
   width: 100%;
   height: 100vh;
   object-fit: cover;
@@ -14,4 +16,182 @@
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+.card {
+  width: 900px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  padding: 25px 35px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.largeCard h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  font-size: 17px;
+}
+
+.hourlyCard h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.hourlyRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hour {
+  width: 120px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.7);
+  transition: 0.2s ease;
+}
+
+.hour:hover {
+  transform: scale(1.05);
+  background: white;
+}
+
+.hour span {
+  font-size: 32px;
+  display: block;
+  margin: 10px 0;
+}
+
+ */
+
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Background Image */
+.bgimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Overlay Content */
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 120px 80px;
+  color: white;
+}
+
+/* MAIN WEATHER CARD */
+.weatherHeroCard {
+  width: 520px;
+  height: 250px;
+  padding: 28px 32px;
+  border-radius: 18px;
+  background: rgba(160, 200, 255, 0.35);
+  backdrop-filter: blur();
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LEFT TEXT */
+.heroLeft h2 {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.heroLeft h1 {
+  font-size: 72px;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.heroLeft p {
+  font-size: 16px;
+  margin-top: 6px;
+  opacity: 0.95;
+}
+
+/* RIGHT WEATHER ICON */
+.heroRight {
+  font-size: 88px;
+}
+
+/* HOURLY SECTION */
+.hourlySection {
+  margin-top: 28px;
+  width: 560px;
+  padding: 18px 22px;
+  border-radius: 18px;
+  background: rgba(160, 200, 255, 0.35);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+}
+
+/* Hourly Title */
+.hourlySection h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+/* Hourly Row */
+.hourlyRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+/* INDIVIDUAL HOUR CARD */
+.hourCard {
+  width: 74px;
+  height: 140px;
+  border-radius: 20px;
+  background: rgba(120, 170, 255, 0.45);
+  backdrop-filter: blur();
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+/* Hour Time */
+.hourCard p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Hour Icon */
+.hourCard span {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* Temperature */
+.hourCard h4 {
+  font-size: 18px;
+  font-weight: 600;
 }

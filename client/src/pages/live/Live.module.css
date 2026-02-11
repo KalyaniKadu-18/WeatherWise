@@ -15,3 +15,49 @@
   left: 0;
   z-index: 1;
 }
+
+.heading {
+  color: white;
+  font-size: 2.5rem;
+}
+
+.icon {
+  color: #FFD700;
+  font-size: 2.8rem;
+}
+
+.LiveContainer{
+  position: relative;
+  width: 50%;
+  height: 70%;
+  padding: 20px;
+  align-items: center;
+  flex-direction: column;
+  left: 50%;
+  background: rgba(120, 180, 255, 0.35);
+  backdrop-filter: blur();  
+  transform: translate(-50%, -50%);
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  border-radius: 10px;
+} 
+
+.line{
+  border: var(--tertiary);
+  width: 550px;
+}
+
+.para{
+  color: white;
+}
+
+.messageBox {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: white;
+  font-size: 1.2rem;
+}

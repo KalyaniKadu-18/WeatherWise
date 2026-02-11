@@ -1,14 +1,23 @@
-.container{
-    height: 130px;
-    width: 100px;
-    background: rgba(255, 255, 255, 0.20); 
-    border-radius: 20px;
-    padding: 10px;
-    color: white;
-    font-weight: bold;
+.container {
+  height: 130px;
+  width: 100px;
+  background: rgba(120, 180, 255, 0.35); /* tinted glass */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 10px;
+  color: var(--tertiary);
+  font-weight: bold;
 }
 
 .para {
   font-size: 22px;
   font-weight: bold;
+}
+
+.icon {
+  color: yellow;
+  padding-right: 10px;
 }

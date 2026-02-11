@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Live from './pages/live/Live';
@@ -8,16 +8,21 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 
 function App() {
+
+  const [city, setCity] = useState("Pune");
+
   return (
     <BrowserRouter>
-      <Navbar/>
+      <Navbar setCity={setCity} />
+
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home city={city} />} />
         <Route path='/liveweather' element={<Live />} />
         <Route path='/forecast' element={<Forecast />} />
         <Route path='/alerts' element={<Alerts />} />
-\      </Routes>
-      <Footer/>
+      </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
 }

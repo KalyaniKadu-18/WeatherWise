@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './HomeCard.module.css';
+import { FaTemperatureLow } from "react-icons/fa";
 
 function HomeCard({ time, temperature }) {
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>{time}</h2>
-      <p className={styles.para}>{temperature}</p>
+      <p className={styles.para}><FaTemperatureLow className={styles.icon}/>{temperature}</p>
     </div>
   );
 }
