@@ -1,34 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styles from "./Forecast.module.css";
 import bgimg from '../../assets/BackgroundImage.webp';
 
 function Forecast() {
 
-  const [weather] = useState({
-    city: "Pune",
-    condition: "Cloudy",
-    temp: 30,
-    min: 23,
-    max: 30,
-    humidity: 60,
-    wind: 10,
-    rainChance: 25,
-    sunrise: "6:10 AM",
-    sunset: "6:35 PM",
-    hourly: [
-      { time: "2 PM", temp: 29, icon: "🌤️" },
-      { time: "3 PM", temp: 28, icon: "☁️" },
-      { time: "4 PM", temp: 27, icon: "☁️" },
-      { time: "5 PM", temp: 26, icon: "🌧️" },
-      { time: "6 PM", temp: 25, icon: "☁️" },
-      { time: "7 PM", temp: 24, icon: "🌙" },
-    ]
+  const [city, setCity] = useState("");
+
+  const [weather, setWeather] = useState({
+    city: "",
+    condition: "",
+    temp: "",
+    min: "",
+    max: "",
+    humidity: "",
+    wind: "",
+    rainChance: "",
+    sunrise: "",
+    sunset: "",
+    hourly: []
   });
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/weather/forecast?city=${city}`
+        );
+
+        const data = response.data;
+
+        setWeather({
+          city: data.city,
+          condition: data.condition,
+          temp: data.temp,
+          min: data.min,
+          max: data.max,
+          humidity: data.humidity,
+          wind: data.wind,
+          rainChance: data.rainChance,
+          sunrise: data.sunrise,
+          sunset: data.sunset,
+          hourly: data.hourly
+        });
+
+      } catch (error) {
+        console.error("Error fetching weather:", error);
+      }
+    };
+
+    fetchWeather();
+  }, [city]);
 
   return (
     <div className={styles.container}>
 
-      <img src={bgimg} className={styles.bgimg} />
+      <img src={bgimg} className={styles.bgimg} alt="bg" />
 
       <div className={styles.heroContent}>
 
@@ -50,7 +77,7 @@ function Forecast() {
           <h3>Hourly Forecast</h3>
 
           <div className={styles.hourlyRow}>
-            {weather.hourly.map((hour, index) => (
+            {weather.hourly?.map((hour, index) => (
               <div className={styles.hourCard} key={index}>
                 <p>{hour.time}</p>
                 <span>{hour.icon}</span>

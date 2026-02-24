@@ -1,94 +1,77 @@
-import React from 'react';
-import styles from './Home.module.css';
-import bgimg from '../../assets/BackgroundImage.webp';
-import HomeCard from '../../components/homepgcomponents/homeCard/HomeCard';
-import logo from '../../assets/logo.png';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import styles from "./Home.module.css";
+import bgimg from "../../assets/BackgroundImage.webp";
+import logo from "../../assets/logo.png";
+import { WiThermometer, WiHumidity, WiStrongWind } from "react-icons/wi";
 
 function Home({ city }) {
+  const [weather, setWeather] = useState(null);
 
-  const cityWeather = {
-    Pune: {
-      temp: "72°F",
-      condition: "Sunny",
-      high: "78°",
-      low: "50°",
-      hourly: [
-        { time: 'Now', temperature: '20°' },
-        { time: '1 PM', temperature: '22°' },
-        { time: '2 PM', temperature: '23°' },
-        { time: '3 PM', temperature: '24°' },
-        { time: '4 PM', temperature: '25°' },
-      ]
-    },
-    Mumbai: {
-      temp: "84°F",
-      condition: "Humid",
-      high: "88°",
-      low: "70°",
-      hourly: [
-        { time: 'Now', temperature: '28°' },
-        { time: '1 PM', temperature: '30°' },
-        { time: '2 PM', temperature: '31°' },
-        { time: '3 PM', temperature: '32°' },
-        { time: '4 PM', temperature: '33°' },
-      ]
-    },
-    Delhi: {
-      temp: "90°F",
-      condition: "Hot",
-      high: "95°",
-      low: "75°",
-      hourly: [
-        { time: 'Now', temperature: '35°' },
-        { time: '1 PM', temperature: '36°' },
-        { time: '2 PM', temperature: '38°' },
-        { time: '3 PM', temperature: '39°' },
-        { time: '4 PM', temperature: '40°' },
-      ]
-    }
-  };
+  useEffect(() => {
+    if (!city) return;
 
-  const data = cityWeather[city] || cityWeather["Pune"];
+    const fetchWeather = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/weather/liveweather",
+          { params: { city } }
+        );
+
+        setWeather(response.data);
+      } catch (error) {
+        console.error("Error fetching weather:", error);
+      }
+    };
+
+    fetchWeather();
+  }, [city]);
+
+  if (!weather) {
+    return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
+  }
 
   return (
     <div className={styles.container}>
-      
-      <img 
-        className={styles.heroBackgroundImg} 
-        src={bgimg} 
+      <img
+        className={styles.heroBackgroundImg}
+        src={bgimg}
         alt="background"
       />
 
       <div className={styles.heroContent}>
-
         <div className={styles.weatherHeroCard}>
+          
+          {/* LEFT SIDE */}
           <div className={styles.heroLeft}>
-            <h2>{city || "Pune"}</h2>
-            <p>Tuesday, April 23</p>
-            <h1>{data.temp}</h1>
-            <p>{data.condition}</p>
-            <span>H: {data.high}  L: {data.low}</span>
+            <h1 className={styles.heading}>{weather.city}</h1>
+            <p>{new Date().toDateString()}</p>
+
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <img src={weather.icon} alt="icon" width="40" />
+              <p>{weather.condition}</p>
+            </div>
+
+            <div className={styles.infoRow}>
+              <WiThermometer className={styles.infoIcon} />
+              <p className={styles.para}>Feels Like: {weather.feelsLike}°C</p>
+            </div>
+
+            <div className={styles.infoRow}>
+              <WiHumidity className={styles.infoIcon} />
+              <p className={styles.para}>Humidity: {weather.humidity}%</p>
+            </div>
+
+            <div className={styles.infoRow}>
+              <WiStrongWind className={styles.infoIcon} />
+              <p className={styles.para}>Wind Speed: {weather.windSpeed} kph</p>
+            </div>
           </div>
 
           <div className={styles.heroRight}>
-            <img className={styles.logo} src={logo}/>
+            <img className={styles.logo} src={logo} alt="logo" />
           </div>
         </div>
-
-        <div className={styles.hourlySection}>
-          <h3>Hourly Forecast</h3>
-
-          <div className={styles.hourlyRow}>
-            {data.hourly.map((item, index) => (
-              <HomeCard 
-                key={index}
-                time={item.time}
-                temperature={item.temperature}
-              />
-            ))}
-          </div>
-        </div>
-
       </div>
     </div>
   );
