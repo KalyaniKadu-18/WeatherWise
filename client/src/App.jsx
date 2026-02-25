@@ -17,7 +17,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home city={city} />} />
-        <Route path='/liveweather' element={<Live />} />
+        <Route path='/liveweather' element={<Live city={city} />} />
         <Route path='/forecast' element={<Forecast />} />
         <Route path='/alerts' element={<Alerts />} />
       </Routes>

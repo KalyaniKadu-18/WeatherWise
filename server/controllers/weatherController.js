@@ -59,7 +59,7 @@ export const getForecastWeather = async (req, res) => {
         params: {
           key: apiKey,
           q: city,
-          days: 5,        // 5-day forecast
+          days: 5,        
           aqi: "no",
           alerts: "no",
         },
