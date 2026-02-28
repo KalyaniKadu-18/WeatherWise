@@ -4,6 +4,7 @@ import styles from "./Home.module.css";
 import bgimg from "../../assets/BackgroundImage.webp";
 import logo from "../../assets/logo.png";
 import { WiThermometer, WiHumidity, WiStrongWind } from "react-icons/wi";
+import Footer from "../../components/footer/Footer";
 
 function Home({ city }) {
   const [weather, setWeather] = useState(null);
@@ -73,6 +74,7 @@ function Home({ city }) {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

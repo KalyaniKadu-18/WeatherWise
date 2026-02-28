@@ -23,7 +23,7 @@ function Live({ city }) {
           { params: { city } }
         );
 
-    console.log("API DATA:", response.data); // 👈 ADD THIS
+    console.log("API DATA:", response.data);
         setWeather(response.data);
       } catch (error) {
         console.error("Error fetching weather:", error);

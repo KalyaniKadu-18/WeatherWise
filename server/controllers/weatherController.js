@@ -24,7 +24,6 @@ export const getWeather = async (req, res) => {
 
     const data = response.data;
 
-    // 🔥 Send formatted data for frontend
     const formattedData = {
       city: data.location.name,
       temp: data.current.temp_c,
@@ -59,7 +58,7 @@ export const getForecastWeather = async (req, res) => {
         params: {
           key: apiKey,
           q: city,
-          days: 5,        
+          days: 5,
           aqi: "no",
           alerts: "no",
         },
@@ -68,18 +67,6 @@ export const getForecastWeather = async (req, res) => {
 
     const data = response.data;
 
-    // 🔥 Format Daily Forecast
-    const dailyForecast = data.forecast.forecastday.map((day) => ({
-      date: day.date,
-      max: day.day.maxtemp_c,
-      min: day.day.mintemp_c,
-      condition: day.day.condition.text,
-      icon: day.day.condition.icon,
-      humidity: day.day.avghumidity,
-      rainChance: day.day.daily_chance_of_rain,
-    }));
-
-    // 🔥 Format Hourly Forecast (Next 5 hours)
     const currentHour = new Date().getHours();
 
     const hourlyForecast = data.forecast.forecastday[0].hour
@@ -90,12 +77,26 @@ export const getForecastWeather = async (req, res) => {
         icon: hour.condition.icon,
       }));
 
+    const dailyForecast = data.forecast.forecastday.map((day) => ({
+      date: day.date,
+      max: day.day.maxtemp_c,
+      min: day.day.mintemp_c,
+      condition: day.day.condition.text,
+      icon: day.day.condition.icon,
+      humidity: day.day.avghumidity,
+      rainChance: day.day.daily_chance_of_rain,
+    }));
+
     res.status(200).json({
       city: data.location.name,
       temp: data.current.temp_c,
       min: data.forecast.forecastday[0].day.mintemp_c,
       max: data.forecast.forecastday[0].day.maxtemp_c,
       condition: data.current.condition.text,
+      humidity: data.current.humidity,
+      wind: data.current.wind_kph,
+      sunrise: data.forecast.forecastday[0].astro.sunrise,
+      sunset: data.forecast.forecastday[0].astro.sunset,
       hourly: hourlyForecast,
       forecast: dailyForecast,
     });

@@ -1,122 +1,59 @@
-/* .container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.bgimg {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-
-.card {
-  width: 900px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 20px;
-  padding: 25px 35px;
-  margin-bottom: 30px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.largeCard h2 {
-  font-size: 26px;
-  margin-bottom: 20px;
-}
-
-.infoGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  font-size: 17px;
-}
-
-.hourlyCard h3 {
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-.hourlyRow {
-  display: flex;
-  justify-content: space-between;
-}
-
-.hour {
-  width: 120px;
-  text-align: center;
-  padding: 15px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.7);
-  transition: 0.2s ease;
-}
-
-.hour:hover {
-  transform: scale(1.05);
-  background: white;
-}
-
-.hour span {
-  font-size: 32px;
-  display: block;
-  margin: 10px 0;
-}
-
- */
-
-
 .container {
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
+  min-height: 100vh;        /* fixed scroll */
+  overflow-y: auto;         /* fixed scroll */
   align-items: center;
-  justify-content: center;
-  margin-top: 30px;
 }
 
-/* Background Image */
-.bgimg {
+/* Dark overlay for better visibility */
+.container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 0;
+}
+
+.bgimg {
+  width: 100%;
+  height: 100vh;
   object-fit: cover;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
 }
 
-/* Overlay Content */
 .heroContent {
   position: relative;
   z-index: 2;
-  padding: 120px 80px;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
+  gap: 25px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);  /* better readability */
 }
 
-/* MAIN WEATHER CARD */
 .weatherHeroCard {
   width: 520px;
-  height: 250px;
+  min-height: 250px;
   padding: 28px 32px;
-  border-radius: 18px;
-  background: rgba(160, 200, 255, 0.35);
-  backdrop-filter: blur();
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);  /* fixed visibility */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* LEFT TEXT */
 .heroLeft h2 {
   font-size: 26px;
   font-weight: 600;
@@ -129,69 +66,138 @@
 }
 
 .heroLeft p {
-  font-size: 16px;
+  font-size: 15px;
   margin-top: 6px;
   opacity: 0.95;
 }
 
-/* RIGHT WEATHER ICON */
 .heroRight {
   font-size: 88px;
 }
 
-/* HOURLY SECTION */
 .hourlySection {
-  margin-top: 28px;
   width: 560px;
-  padding: 18px 22px;
-  border-radius: 18px;
-  background: rgba(160, 200, 255, 0.35);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+  padding: 20px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);  /* fixed visibility */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
 }
 
-/* Hourly Title */
 .hourlySection h3 {
   font-size: 18px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
-/* Hourly Row */
 .hourlyRow {
   display: flex;
   justify-content: space-between;
   gap: 14px;
 }
 
-/* INDIVIDUAL HOUR CARD */
 .hourCard {
-  width: 74px;
-  height: 140px;
+  width: 80px;
+  height: 150px;
   border-radius: 20px;
-  background: rgba(120, 170, 255, 0.45);
-  backdrop-filter: blur();
+  background: rgba(255, 255, 255, 0.35);  /* fixed visibility */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease;
 }
 
-/* Hour Time */
+.hourCard:hover {
+  transform: translateY(-5px);
+}
+
 .hourCard p {
   font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-/* Hour Icon */
-.hourCard span {
-  font-size: 22px;
-  margin-bottom: 10px;
+.hourCard img {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 8px;
 }
 
-/* Temperature */
 .hourCard h4 {
   font-size: 18px;
   font-weight: 600;
+}
+
+.dailySection {
+  width: 560px;
+  padding: 20px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.dailySection h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.dailyRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dayCard {
+  width: 95px;
+  padding: 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease;
+}
+
+.dayCard:hover {
+  transform: translateY(-5px);
+}
+
+.dayCard img {
+  width: 34px;
+  height: 34px;
+  margin: 6px 0;
+}
+
+.dayCard p {
+  font-size: 13px;
+  margin: 4px 0;
+}
+
+.error {
+  color: #ff4d4d;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .weatherHeroCard,
+  .hourlySection,
+  .dailySection {
+    width: 90%;
+  }
+
+  .heroLeft h1 {
+    font-size: 48px;
+  }
+
+  .hourlyRow,
+  .dailyRow {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

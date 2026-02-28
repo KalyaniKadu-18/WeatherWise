@@ -11,14 +11,13 @@ function Navbar({ setCity }) {
   const handleSearch = () => {
     if (input.trim() !== "") {
       setCity(input.trim());
-      setInput(""); // clear input after search
+      setInput(""); 
     }
   };
 
   return (
     <div className={styles.container}>
       
-      {/* LEFT SECTION */}
       <div className={styles.leftNav}>
         <div className={styles.logo}>
           <Link to="/">
