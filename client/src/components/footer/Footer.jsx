@@ -5,7 +5,7 @@ import { FaLinkedin } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
-function Footbar() {
+function Footer() {
   return (
     <div className={styles.container}>
       <div className={styles.leftSubContainer}>
@@ -21,4 +21,4 @@ function Footbar() {
   )
 }
 
-export default Footbar
+export default Footer;

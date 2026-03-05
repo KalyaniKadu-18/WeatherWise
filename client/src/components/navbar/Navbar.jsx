@@ -26,7 +26,6 @@ function Navbar({ setCity }) {
         </div>
       </div>
 
-      {/* MIDDLE SECTION (SEARCH) */}
       <div className={styles.midNav}>
         <div className={styles.searchBox}>
           <input
@@ -50,7 +49,6 @@ function Navbar({ setCity }) {
         </div>
       </div>
 
-      {/* RIGHT SECTION */}
       <div className={styles.rightNav}>
         <Link className={styles.Link1} to="/liveweather">
           Live Weather

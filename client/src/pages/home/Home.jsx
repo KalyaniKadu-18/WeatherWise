@@ -43,7 +43,6 @@ function Home({ city }) {
       <div className={styles.heroContent}>
         <div className={styles.weatherHeroCard}>
           
-          {/* LEFT SIDE */}
           <div className={styles.heroLeft}>
             <h1 className={styles.heading}>{weather.city}</h1>
             <p>{new Date().toDateString()}</p>

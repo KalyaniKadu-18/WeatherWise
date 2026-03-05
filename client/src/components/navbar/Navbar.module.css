@@ -11,7 +11,6 @@
   padding: 0 20px;
 }
 
-/* Logo */
 .logo {
   display: flex;
   height: 45px;
@@ -23,20 +22,17 @@
   border-radius: 15px;
 }
 
-/* Left */
 .leftNav {
   display: flex;
   align-items: center;
 }
 
-/* Middle Search */
 .midNav {
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
-/* Search Box */
 .searchBox {
   position: relative;
   width: 260px;
@@ -69,7 +65,6 @@
   color: var(--primary);
 }
 
-/* Right Links */
 .rightNav {
   padding-right: 50px;
   display: flex;
@@ -77,7 +72,6 @@
   gap: 20px;
 }
 
-/* Links */
 .Link1 {
   text-decoration: none;
   color: var(--primary);
