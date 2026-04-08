@@ -27,3 +27,13 @@ export const getForecastWeather = async (city) => {
     throw error;
   }
 };
+
+export const getWeatherAlerts = async (city) => {
+  const response = await axios.get(
+    "http://localhost:8000/weather/alerts",
+    {
+      params: { city }
+    }
+  );
+  return response.data;
+};

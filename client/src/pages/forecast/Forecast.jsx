@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "./Forecast.module.css";
 import bgimg from "../../assets/BackgroundImage.webp";
 
-function Forecast({ city }) {
+function Forecast({ city = "Pune" }) { // ✅ default city
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -22,7 +22,7 @@ function Forecast({ city }) {
   });
 
   useEffect(() => {
-    if (!city) return;
+    console.log("CITY:", city); // ✅ debug
 
     const fetchWeather = async () => {
       try {
@@ -30,9 +30,13 @@ function Forecast({ city }) {
         setError("");
 
         const response = await axios.get(
-          `http://localhost:8000/weather/forecast?city=${city}`
+          "http://localhost:8000/weather/forecast", // ✅ FIXED URL
+          {
+            params: { city }
+          }
         );
 
+        console.log("FORECAST DATA:", response.data); // ✅ debug
         setWeather(response.data);
       } catch (err) {
         setError("City not found or server error");
@@ -82,7 +86,7 @@ function Forecast({ city }) {
                 {weather.hourly?.map((hour, index) => (
                   <div className={styles.hourCard} key={index}>
                     <p>{hour.time}</p>
-                    <img src={hour.icon} alt="icon" />
+                    <img src={`https:${hour.icon}`} alt="icon" /> {/* ✅ fix icon */}
                     <h4>{hour.temp}°</h4>
                   </div>
                 ))}
@@ -96,7 +100,7 @@ function Forecast({ city }) {
                 {weather.forecast?.map((day, index) => (
                   <div className={styles.dayCard} key={index}>
                     <p>{day.date}</p>
-                    <img src={day.icon} alt="icon" />
+                    <img src={`https:${day.icon}`} alt="icon" /> {/* ✅ fix icon */}
                     <p>{day.condition}</p>
                     <p>Min: {day.min}°C</p>
                     <p>Max: {day.max}°C</p>

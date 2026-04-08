@@ -5,9 +5,9 @@ import AlertCard from "../../components/alertOverlay/alertCard";
 import SafetyCard from "../../components/safety/SafetyCard";
 import { GoAlertFill } from "react-icons/go";
 import { FaCircleCheck } from "react-icons/fa6";
+import { getWeatherAlerts } from "../../../../server/controllers/alertController";
 
 function Alerts() {
-
   const [alerts, setAlerts] = useState([]);
   const [city] = useState("Mumbai");
   const [loading, setLoading] = useState(true);
@@ -27,7 +27,9 @@ function Alerts() {
       try {
         const data = await getWeatherAlerts(city);
 
-        if (data.alerts) {
+        console.log("ALERT DATA:", data); // ✅ debug
+
+        if (data?.alerts?.length > 0) {
           setAlerts(data.alerts);
         } else {
           setAlerts([]);
@@ -35,6 +37,7 @@ function Alerts() {
 
       } catch (error) {
         console.error("Error fetching alerts:", error);
+        setAlerts([]);
       } finally {
         setLoading(false);
       }

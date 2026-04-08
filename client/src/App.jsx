@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Live from './pages/live/Live';
+import Login from './pages/login/Login';
 import Forecast from './pages/forecast/Forecast';
 import Alerts from './pages/alerts/Alerts';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
+import Signup from './pages/signup/signup';
 
 function App() {
 
@@ -20,6 +22,9 @@ function App() {
         <Route path='/liveweather' element={<Live city={city} />} />
         <Route path='/forecast' element={<Forecast city={city} />} />
         <Route path='/alerts' element={<Alerts />} />
+        <Route path='/login' element={<Login />} />
+                <Route path='/signup' element={<Signup />} />
+
       </Routes>
 
       <Footer />

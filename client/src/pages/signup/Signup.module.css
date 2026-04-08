@@ -1,0 +1,108 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.heroBackgroundImg {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* Glass Card */
+.weatherHeroCard {
+  width: 500px;
+  background: rgba(120, 180, 255, 0.35);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding: 35px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Left side */
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.heading {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.form button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #0077ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form button:hover {
+  background: #005fcc;
+}
+
+/* Right icon */
+.heroRight {
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+}
+
+/* Error */
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .weatherHeroCard {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .heroRight {
+    font-size: 40px;
+  }
+}

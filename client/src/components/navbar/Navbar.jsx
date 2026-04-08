@@ -59,6 +59,12 @@ function Navbar({ setCity }) {
         <Link className={styles.Link1} to="/alerts">
           Alerts
         </Link>
+        <Link className={styles.Link1} to="/login">
+          Login
+        </Link>
+         <Link className={styles.Link1} to="/signup">
+          Signup
+        </Link>
       </div>
 
     </div>

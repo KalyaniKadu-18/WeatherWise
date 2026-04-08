@@ -1,33 +1,38 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import styles from "./Home.module.css";
 import bgimg from "../../assets/BackgroundImage.webp";
 import logo from "../../assets/logo.png";
 import { WiThermometer, WiHumidity, WiStrongWind } from "react-icons/wi";
-import Footer from "../../components/footer/Footer";
+import Footer from "../../components/footer/Footer.jsx";
+import { getWeather } from "../../../WeatherServices.js"; 
 
-function Home({ city }) {
+function Home({ city = "Pune" }) { // ✅ default city added
   const [weather, setWeather] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!city) return;
+    console.log("CITY:", city); // ✅ debug
 
     const fetchWeather = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8000/weather/liveweather",
-          { params: { city } }
-        );
-
-        setWeather(response.data);
+        const data = await getWeather(city);
+        console.log("API DATA:", data); // ✅ debug
+        setWeather(data);
       } catch (error) {
         console.error("Error fetching weather:", error);
+        setError("Failed to load weather data");
       }
     };
 
     fetchWeather();
   }, [city]);
 
+  // ✅ Error UI
+  if (error) {
+    return <h2 style={{ textAlign: "center" }}>{error}</h2>;
+  }
+
+  // ✅ Loading UI
   if (!weather) {
     return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
   }
@@ -54,17 +59,23 @@ function Home({ city }) {
 
             <div className={styles.infoRow}>
               <WiThermometer className={styles.infoIcon} />
-              <p className={styles.para}>Feels Like: {weather.feelsLike}°C</p>
+              <p className={styles.para}>
+                Feels Like: {weather.feelsLike}°C
+              </p>
             </div>
 
             <div className={styles.infoRow}>
               <WiHumidity className={styles.infoIcon} />
-              <p className={styles.para}>Humidity: {weather.humidity}%</p>
+              <p className={styles.para}>
+                Humidity: {weather.humidity}%
+              </p>
             </div>
 
             <div className={styles.infoRow}>
               <WiStrongWind className={styles.infoIcon} />
-              <p className={styles.para}>Wind Speed: {weather.windSpeed} kph</p>
+              <p className={styles.para}>
+                Wind Speed: {weather.windSpeed} kph
+              </p>
             </div>
           </div>
 
@@ -73,7 +84,8 @@ function Home({ city }) {
           </div>
         </div>
       </div>
-      <Footer/>
+
+      <Footer />
     </div>
   );
 }

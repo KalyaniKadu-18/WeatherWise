@@ -10,29 +10,39 @@ import {
   FaTint
 } from "react-icons/fa";
 
-function Live({ city }) {
+function Live({ city = "Pune" }) { // ✅ default city added
   const [weather, setWeather] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!city) return;
+    console.log("CITY:", city); // ✅ debug
 
     const fetchWeather = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/weather/liveweather",
-          { params: { city } }
+          "http://localhost:8000/weather/liveweather", // ✅ FIXED URL
+          {
+            params: { city }
+          }
         );
 
-    console.log("API DATA:", response.data);
+        console.log("API DATA:", response.data); // ✅ debug
         setWeather(response.data);
       } catch (error) {
         console.error("Error fetching weather:", error);
+        setError("Failed to fetch weather");
       }
     };
 
     fetchWeather();
   }, [city]);
 
+  // ✅ Error UI
+  if (error) {
+    return <h2 style={{ textAlign: "center" }}>{error}</h2>;
+  }
+
+  // ✅ Loading UI
   if (!weather) {
     return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
   }
